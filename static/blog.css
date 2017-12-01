@@ -5,6 +5,11 @@
 body {
   font-family: Georgia, "Times New Roman", Times, serif;
   color: #555;
+  height: 100%;
+}
+
+html {
+  height: 100%;
 }
 
 h1, .h1,
@@ -92,6 +97,24 @@ h6, .h6 {
   font-size: 20px;
   color: #999;
 }
+
+/*
+ * Full Spread Image
+ */
+ 
+ .bg {
+    /* The image used */
+    background-image: url("/static/CityLab_Map.png "); /* Dimensions: 940 × 675 */
+
+    /* Full height */
+    height: 100%; 
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+/* Source: https://www.w3schools.com/howto/howto_css_full_page.asp */
 
 
 /*

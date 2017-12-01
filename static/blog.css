@@ -35,6 +35,11 @@ h6, .h6 {
   }
 }
 
+#map {
+  height: 400px;
+  width: 100%;
+}
+
 /*
  * Background Text for Dummy Map
  */
@@ -190,6 +195,24 @@ h6, .h6 {
   border-radius: 30px;
 }
 
+/*
+ * Parallax Slider
+ */
+
+.parallax {
+    /* The image used */
+    background-image: url("/static/CityLab_Map.png ");
+
+    /* Set a specific height */
+    height: 100%; 
+
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+/* Source: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_parallax */
 
 /*
  * Blog posts

@@ -89,9 +89,6 @@ def update():
                           LIMIT 50""",
                           sw_lat=sw_lat, ne_lat=ne_lat, sw_lng=sw_lng, ne_lng=ne_lng)
 
-    print("PRINTING++++++++++++++++++")
-    print(rows)
-
     # Output places as JSON
     return jsonify(rows)
 

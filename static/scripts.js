@@ -7,7 +7,6 @@ let markers = [];
 // Info window
 let info = new google.maps.InfoWindow();
 
-
 // Execute when the DOM is fully loaded
 $(document).ready(function() {
 
@@ -38,14 +37,16 @@ $(document).ready(function() {
     // Options for map
     // https://developers.google.com/maps/documentation/javascript/reference#MapOptions
     let options = {
-        center: {lat: 42.3370, lng: -71.1256}, // Cambridge, Massachusetts
+        center: {lat: 0, lng: 0}, // Cambridge, Massachusetts
         disableDefaultUI: true,
-        mapTypeId: google.maps.MapTypeId.ROADMAP,
+        mapTypeId: google.maps.MapTypeId.TERRAIN,
         maxZoom: 14,
+        minZoom: 2,
         panControl: true,
         styles: styles,
-        zoom: 13,
-        zoomControl: true
+        zoom: 2,
+        zoomControl: true,
+        fullscreenControl: true
     };
 
     // Get DOM node in which map will be instantiated
@@ -60,63 +61,39 @@ $(document).ready(function() {
 });
 
 
-// Add marker for place to map
-function addMarker(place)
-{
-    // store latitude and longitude in variable
-    let LatLng = new google.maps.LatLng(place.latitude, place.longitude);
+function initMap() {
 
-    // instantiate marker
-    let marker = new google.maps.Marker({
-        position: LatLng,
-        label: place.place_name+ ", " + place.admin_name1,
-        map: map,
-        icon: {
-            labelOrigin: new google.maps.Point(7, 40),
-            // source: https://stackoverflow.com/questions/8248077/google-maps-v3-standard-icon-shadow-names-equiv-of-g-default-icon-in-v2
-            url: 'http://maps.google.com/mapfiles/marker.png'
-        }
+    // define center
+    //var uluru = {lat: -25.363, lng: 131.044};
+
+    map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 2
+        //center: uluru
     });
 
-    // add newly created marker to the array stored in global variable markers
-    markers.push(marker);
-
-    // listen for clicks on marker
-    google.maps.event.addListener(marker, 'click', function() {
-        // get articles for place
-        let parameters = {
-            geo: place.postal_code
-        }
-
-        $.getJSON("/articles", parameters, function(articles, textStatus, jqXHR){
-            // check for no returns
-            if (articles.length == 0)
-            {
-                console.log("No articles retrieved");
-            }
-
-            else
-            {
-                // store the string of html text in variable content
-                let content = "<ul>";
-
-                //iterage through each article or bullet point of the info box
-                for (let bullet = 0; bullet < 5; bullet++)
-                {
-                    content = content + '<li> <a href="'+articles[bullet]["link"]+'">'+articles[bullet]["title"]+'</a></li>';
-                }
-                content = content + "</ul>";
-
-                // show marker info
-                showInfo(marker, content);
-            }
-        });
+    // Configure UI once Google Map is idle (i.e., loaded)
+    google.maps.event.addListenerOnce(map, "idle", configure);
 
 
-    });
+    // Source: https://gist.github.com/parth1020/4481893
+    // declare variables
+    //var marker, i;
 
+    // place marker for each location
+    //for (i = 0; i < locations.length; i++) {
+        //marker = new google.maps.Marker({
+            //position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+            //map: map
+    //});
+
+    // add listener for clicks
+    //google.maps.event.addListener(marker, 'click', (function(marker, i) {
+        //return function() {
+            //infowindow.setContent(locations[i][0]);
+            //infowindow.open(map, marker);
+        //}
+        //})(marker, i));
 }
-
 
 // Configure application
 function configure()
@@ -138,32 +115,32 @@ function configure()
     });
 
     // Configure typeahead
-    $("#q").typeahead({
-        highlight: false,
-        minLength: 1
-    },
-    {
-        display: function(suggestion) { return null; },
-        limit: 10,
-        source: search,
-        templates: {
-            suggestion: Handlebars.compile(
-                "<div>" +
-                "{{place_name}}, {{admin_name1}}, {{postal_code}}" +
-                "</div>"
-            )
-        }
-    });
+    //$("#q").typeahead({
+        //highlight: false,
+        //minLength: 1
+    //},
+    //{
+        //display: function(suggestion) { return null; },
+        //limit: 10,
+        //source: search,
+        //templates: {
+            //suggestion: Handlebars.compile(
+                //"<div>" +
+                //"{{city}}, {{country}}" +
+                //"</div>"
+            //)
+        //}
+    //};
 
     // Re-center map after place is selected from drop-down
-    $("#q").on("typeahead:selected", function(eventObject, suggestion, name) {
+    //$("#q").on("typeahead:selected", function(eventObject, suggestion, name) {
 
         // Set map's center
-        map.setCenter({lat: parseFloat(suggestion.latitude), lng: parseFloat(suggestion.longitude)});
+        //map.setCenter({lat: parseFloat(suggestion.latitude), lng: parseFloat(suggestion.longitude)});
 
         // Update UI
-        update();
-    });
+        //update();
+    //});
 
     // Hide info window when text box has focus
     $("#q").focus(function(eventData) {
@@ -185,14 +162,33 @@ function configure()
     $("#q").focus();
 }
 
-
-// Remove markers from map
-function removeMarkers()
+// Update UI's markers
+function update()
 {
-    // remove all markers from the map and delete them
-    for (var i = 0; i < markers.length; i++) {
-      markers[i].setMap(null);
-    }
+    // Get map's bounds
+    let bounds = map.getBounds();
+    let ne = bounds.getNorthEast();
+    let sw = bounds.getSouthWest();
+
+    // Get places within bounds (asynchronously)
+    let parameters = {
+        ne: `${ne.lat()},${ne.lng()}`,
+        q: $("#q").val(),
+        sw: `${sw.lat()},${sw.lng()}`
+    };
+
+    $.getJSON("/update", parameters, function(data, textStatus, jqXHR) {
+
+        console.log(data);
+        // Remove old markers from map
+        removeMarkers();
+
+        // add markers
+        for (let i = 0; i < data.length; i++)
+        {
+           addMarker(data[i]);
+        }
+        });
 }
 
 
@@ -209,6 +205,53 @@ function search(query, syncResults, asyncResults)
         asyncResults(data);
     });
 }
+
+
+function addMarker(location)
+{
+    // store latitude and longitude in variable
+    let LatLng = new google.maps.LatLng(location.lat, location.long);
+
+    // instantiate marker
+    let marker = new google.maps.Marker({
+        position: LatLng,
+        //label: location.city_name,
+        map: map,
+        //source: https://stackoverflow.com/questions/40490129/set-label-size-in-google-maps-api
+        label: {
+            text: location.city_name,
+            color: 'black',
+            fontSize: "12px"
+        },
+        icon: {
+            labelOrigin: new google.maps.Point(7, 40),
+            // source: https://stackoverflow.com/questions/8248077/google-maps-v3-standard-icon-shadow-names-equiv-of-g-default-icon-in-v2
+            url: 'http://maps.google.com/mapfiles/marker.png'
+        }
+    });
+
+    // add newly created marker to the array stored in global variable markers
+    markers.push(marker);
+
+    // listen for clicks on marker
+    google.maps.event.addListener(marker, 'click', function() {
+        // get articles for place
+        //let parameters = {
+            //geo: place.postal_code
+        //};
+
+        // source: https://www.thesitewizard.com/html-tutorial/open-links-in-new-window-or-tab.shtml
+        let content = "<h4>" + location.event_name + "</h4>" + "<h5>" + "Number of Deaths: " + location.deaths + "</h5>" + "<p>" + location.description + "</p>" + '<a href="'+ location.link + '" target="_blank">' + "More Information" + "</a>";
+
+        // show marker info
+        showInfo(marker, content);
+    });
+}
+        //});
+
+
+    //});
+
 
 
 // Show info window at marker with content
@@ -236,30 +279,11 @@ function showInfo(marker, content)
     info.open(map, marker);
 }
 
-
-// Update UI's markers
-function update()
+// Remove markers from map
+function removeMarkers()
 {
-    // Get map's bounds
-    let bounds = map.getBounds();
-    let ne = bounds.getNorthEast();
-    let sw = bounds.getSouthWest();
-
-    // Get places within bounds (asynchronously)
-    let parameters = {
-        ne: `${ne.lat()},${ne.lng()}`,
-        q: $("#q").val(),
-        sw: `${sw.lat()},${sw.lng()}`
-    };
-    $.getJSON("/update", parameters, function(data, textStatus, jqXHR) {
-
-       // Remove old markers from map
-       removeMarkers();
-
-       // Add new markers to map
-       for (let i = 0; i < data.length; i++)
-       {
-           addMarker(data[i]);
-       }
-    });
-};
+    // remove all markers from the map and delete them
+    for (var i = 0; i < markers.length; i++) {
+      markers[i].setMap(null);
+    }
+}

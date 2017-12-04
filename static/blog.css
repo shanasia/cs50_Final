@@ -24,6 +24,15 @@ h6, .h6 {
   color: #333;
 }
 
+/* Stylize text box */
+#q
+{
+    /* Override typeahead.js's transparent background */
+    background-color: #ffffff !important;
+
+    /* Text box's width */
+    width: 300px;
+}
 
 /*
  * Override Bootstrap's default container.
@@ -35,10 +44,6 @@ h6, .h6 {
   }
 }
 
-#map {
-  height: 400px;
-  width: 100%;
-}
 
 /*
  * Background Text for Dummy Map
@@ -58,13 +63,13 @@ h6, .h6 {
 /*
  * Full Spread Image
  */
- 
+
 .background {
     /* The image used */
     background-image: url("/static/CityLab_Map.png "); /* Dimensions: 940 × 675 */
 
     /* Full height */
-    height: 100%; 
+    height: 100%;
 
     /* Center and scale the image nicely */
     background-position: center;
@@ -152,10 +157,10 @@ h6, .h6 {
  * Main column and sidebar layout
  */
 .maptext-container {
-  
+
   position: relative;
   color: #000000;
-  
+
   /* Full height */
     height: 100%;
 }
@@ -204,7 +209,7 @@ h6, .h6 {
     background-image: url("/static/CityLab_Map.png ");
 
     /* Set a specific height */
-    height: 100%; 
+    height: 100%;
 
     /* Create the parallax scrolling effect */
     background-attachment: fixed;
@@ -246,7 +251,8 @@ h6, .h6 {
   margin-bottom: 0;
 }
 
-#map-canvas, .container-fluid
+/* Allow map to fill viewport */
+.container-fluid
 {
     /* Height of these elements */
     height: 100%;
@@ -259,4 +265,35 @@ h6, .h6 {
 
     /* No padding within these elements */
     padding: 0;
+
+    /* */
+    width: 970px;
+}
+#map-canvas
+{
+  height: 600px;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* Right align form */
+#form
+{
+    /* Position form "absolutely" where we want it */
+    position: static;
+
+    /* Distance from top edge of viewport */
+    top: 28px;
+
+    /* Form's width */
+    width: 100%;
+}
+#form .form-group
+{
+    /* Block-level flex container */
+    display: flex;
+
+    /* Center container's content */
+    justify-content: flex-start;
 }

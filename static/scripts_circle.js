@@ -399,7 +399,7 @@ function addMarker(location)
             path: google.maps.SymbolPath.CIRCLE,
             fillColor: 'red',
             fillOpacity: .4,
-            scale: magnitude/3,
+            scale: magnitude/2,
             strokeColor: 'white',
             strokeWeight: .5
         }

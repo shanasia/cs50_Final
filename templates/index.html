@@ -5,20 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- A must-have -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge"> <!-- Not quite sure what this does -->
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    
+
     <!-- STYLE SHEETS -->
       <!-- Bootstrap core CSS -->
       <link href="/static/bootstrap.min.css" rel="stylesheet">
       <!-- Custom styles for this template -->
       <link href="/static/blog.css" rel="stylesheet">
-      
+
     <!-- Not quite sure what this does -->
       <meta name="description" content="">
       <meta name="author" content="">
       <link rel="icon" href="../../favicon.ico">
       <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
       <!--<link href="../../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">-->
-      
+
+      <!-- https://developers.google.com/maps/documentation/javascript/ -->
+      <script src="https://maps.googleapis.com/maps/api/js?key={{ key | urlencode }}&v=3.exp"></script>
+
+      <!-- https://mapstyle.withgoogle.com/ -->
+      <script src="https://maps.googleapis.com/maps/api/staticmap?key=AIzaSyCiYSUwjOqMHO0dKpFEsDG1DFaaAmppOIM&center=45.56074657877474,-12.875192260742221&zoom=2&format=png&maptype=roadmap&style=element:geometry%7Ccolor:0x212121&style=element:labels%7Cvisibility:off&style=element:labels.icon%7Cvisibility:off&style=element:labels.text.fill%7Ccolor:0x757575&style=element:labels.text.stroke%7Ccolor:0x212121&style=feature:administrative%7Celement:geometry%7Ccolor:0x757575&style=feature:administrative.country%7Celement:geometry.stroke%7Ccolor:0xc7c7c7%7Cweight:1&style=feature:administrative.country%7Celement:labels.text.fill%7Ccolor:0x9e9e9e&style=feature:administrative.land_parcel%7Cvisibility:off&style=feature:administrative.locality%7Celement:labels.text.fill%7Ccolor:0xbdbdbd&style=feature:administrative.neighborhood%7Cvisibility:off&style=feature:poi%7Celement:labels.text.fill%7Ccolor:0x757575&style=feature:poi.park%7Celement:geometry%7Ccolor:0x181818&style=feature:poi.park%7Celement:labels.text.fill%7Ccolor:0x616161&style=feature:poi.park%7Celement:labels.text.stroke%7Ccolor:0x1b1b1b&style=feature:road%7Celement:geometry.fill%7Ccolor:0x2c2c2c&style=feature:road%7Celement:labels.text.fill%7Ccolor:0x8a8a8a&style=feature:road.arterial%7Celement:geometry%7Ccolor:0x373737&style=feature:road.highway%7Celement:geometry%7Ccolor:0x3c3c3c&style=feature:road.highway.controlled_access%7Celement:geometry%7Ccolor:0x4e4e4e&style=feature:road.local%7Celement:labels.text.fill%7Ccolor:0x616161&style=feature:transit%7Celement:labels.text.fill%7Ccolor:0x757575&style=feature:water%7Celement:geometry%7Ccolor:0x000000&style=feature:water%7Celement:geometry.fill%7Ccolor:0x919ca4&style=feature:water%7Celement:labels.text.fill%7Ccolor:0x3d3d3d&size=480x360"></script>
+
+      <!-- http://jquery.com/ -->
+      <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+
+      <!-- https://github.com/corejavascript/typeahead.js/blob/master/doc/jquery_typeahead.md -->
+      <script src="https://cdn.rawgit.com/corejavascript/typeahead.js/master/dist/typeahead.jquery.js"></script>
+
+      <!-- http://handlebarsjs.com/ -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
+
+      <!-- app's own JavaScript -->
+      <script src="/static/scripts_circle.js"></script>
+
     <title>Mayu and Shanasia's first Website</title>
   </head>
 
@@ -35,7 +53,7 @@
         </nav>
       </div>
     </div>
-    
+
     <!--<div class="background">-->
     <!--  <div class=maptext-container>-->
     <!--    <div class="backgroundmap-text">-->
@@ -43,7 +61,7 @@
     <!--    </div>-->
     <!--  </div>-->
     <!--</div>--> <!-- Container for background image -->
-    
+
     <div class="parallax"></div>
 
     <div class="container">
@@ -89,42 +107,29 @@
             </ol>
             <p>Cras mattis consectetur purus sit amet fermentum. Sed posuere consectetur est at lobortis.</p>
           </div><!-- End of Description -->
-          
-          <div class="parallax"></div>
-          
-          <h3>My Google Maps Demo</h3>
-    <div id="map"></div>
-    <script>
-      function initMap() {
-        var uluru = {lat: -25.363, lng: 131.044};
-        var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 4,
-          center: uluru
-        });
-        var marker = new google.maps.Marker({
-          position: uluru,
-          map: map
-        });
-      }
-    </script>
-    <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCiYSUwjOqMHO0dKpFEsDG1DFaaAmppOIM&callback=initMap">
-    </script>
 
-          <!-- Fill viewport with map -->
-          <div class="container-fluid">
+          <!-- <div class="parallax"></div> -->
 
-              <!-- https://developers.google.com/maps/documentation/javascript/tutorial -->
-              <div id="map-canvas"></div>
+    <h3>The Deadliest Mass Shootings Across the World</h3>
 
-              <!-- http://getbootstrap.com/css/#forms -->
-              <form id="form">
-                  <div class="form-group">
-                      <label class="sr-only" for="q">City, State, Postal Code</label>
-                      <input class="form-control" id="q" placeholder="City, State, Postal Code" type="text"/>
-                  </div>
-              </form>
-          </div>
+  <!-- Fill viewport -->
+  <div class="container-fluid">
+
+    <!-- http://getbootstrap.com/css/#forms -->
+    <form id="form">
+        <div class="form-group">
+            <label class="sr-only" for="q">City</label>
+            <input class="form-control" id="q" placeholder="City" type="text"/>
+        </div>
+    </form>
+
+    <!-- https://developers.google.com/maps/documentation/javascript/tutorial -->
+    <div id="map-canvas"></div>
+
+    <a href="http://www.worldatlas.com/articles/the-deadliest-mass-shootings-in-history.html" target="_blank">Source: World Atlas</a>
+
+  </div>
+
 
           <!--<nav>-->
           <!--  <ul class="pager">-->
@@ -167,9 +172,9 @@
           <!--</div>-->
         <!--</div> --> <!-- /.blog-sidebar -->
 
-      </div><!-- /.row --> 
+    </div><!-- /.row -->
 
-    </div><!-- /.container --> 
+    </div><!-- /.container -->
 
     <footer class="blog-footer">
       <!--<p>Blog template built for <a href="http://getbootstrap.com">Bootstrap</a> by <a href="https://twitter.com/mdo">@mdo</a>.</p>-->
@@ -178,14 +183,14 @@
       </p>
     </footer>
 
-
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
-    <script src="../../dist/js/bootstrap.min.js"></script>
+    <!-- COMMENTED OUT DUE TO ERRORS <script src="../../dist/js/bootstrap.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <!--<script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>-->
+
   </body>
 </html>

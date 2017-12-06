@@ -282,38 +282,38 @@ function configure()
         update();
     });
 
-    // Configure typeahead
-    $("#q").typeahead({
-        highlight: false,
-        minLength: 1
-    },
-    {
-        display: function(suggestion) { return null; },
-        limit: 10,
-        source: search,
-        templates: {
-            suggestion: Handlebars.compile(
-                "<div>" +
-                "{{city}}, {{country}}" +
-                "</div>"
-            )
-        }
-    });
+    // //Configure typeahead
+    // $("#q").typeahead({
+    //     highlight: false,
+    //     minLength: 1
+    // },
+    // {
+    //     display: function(suggestion) { return null; },
+    //     limit: 10,
+    //     source: search,
+    //     templates: {
+    //         suggestion: Handlebars.compile(
+    //             "<div>" +
+    //             "{{city}}, {{country}}" +
+    //             "</div>"
+    //         )
+    //     }
+    // });
 
-    // Re-center map after place is selected from drop-down
-    $("#q").on("typeahead:selected", function(eventObject, suggestion, name) {
+    // // Re-center map after place is selected from drop-down
+    // $("#q").on("typeahead:selected", function(eventObject, suggestion, name) {
 
-        // Set map's center
-        map.setCenter({lat: parseFloat(suggestion.latitude), lng: parseFloat(suggestion.longitude)});
+    //     // Set map's center
+    //     map.setCenter({lat: parseFloat(suggestion.latitude), lng: parseFloat(suggestion.longitude)});
 
-        // Update UI
-        update();
-    });
+    //     // Update UI
+    //     update();
+    // });
 
-    // Hide info window when text box has focus
-    $("#q").focus(function(eventData) {
-        info.close();
-    });
+    // // Hide info window when text box has focus
+    // $("#q").focus(function(eventData) {
+    //     info.close();
+    // });
 
     // Re-enable ctrl- and right-clicking (and thus Inspect Element) on Google Map
     // https://chrome.google.com/webstore/detail/allow-right-click/hompjdfbfmmmgflfjdlnkohcplmboaeo?hl=en
@@ -399,7 +399,7 @@ function addMarker(location)
             path: google.maps.SymbolPath.CIRCLE,
             fillColor: 'red',
             fillOpacity: .4,
-            scale: magnitude/2,
+            scale: magnitude/1.5,
             strokeColor: 'white',
             strokeWeight: .5
         }

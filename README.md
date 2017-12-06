@@ -8,18 +8,19 @@ This README file provides documentation for running the Mass Shootings Website a
 This an educational website that shares information on mass shooting events and statistics.
 The structure of this documentation is as follows:
 
-`Necessary Applications`
-`Accompanying Files and Sturctures`
+`Necessary Applications`,
+`Accompanying Files and Sturctures`,
 `Running the Website`
 
+
                                             ## Necessary Applications ##
-*Languages utilized:
+* Languages utilized:
     * PYTHON
     * HTML
     * CSS
     * JAVASCRIPT
     * SQL
-    * PHP
+    * PHP *
 
 * CS50 IDE
     * The intergrated development environment provided by Harvard's CS50 course and used to develop the website 
@@ -33,6 +34,7 @@ The structure of this documentation is as follows:
         * ~ $ `export API_KEY=value`
         (where `value` is the key provided to you)
 
+
                                     ## Accompanying Files and Structures ##
 This website is built with the following files:
 * `application.py`
@@ -44,7 +46,8 @@ This website is built with the following files:
 All files must be within the same main folder, e.g. `cs50_Final`. For the needs of Flask, `index.html` must be in a subfolder called `templates` and all 
 css files (`blog.css` and `bootstrap.min.css`) must be in a subfolder called `static`.
 
-                                                ## Running the Website ##
+
+                                            ## Running the Website ##
 Once the development environment and necessary applications are downloaded and properly imported, navigate to the project folder via the command line and implement `flask run`. 
 Click on the URL generated and __enjoy__! 
 

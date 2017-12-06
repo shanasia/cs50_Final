@@ -1,13 +1,6 @@
 # Mayu Takeda and Shanasia Sylman
 # CS50 - Malan,  Fall 2017
 # December 8, 2017
-//====================================================================//
-# This documentation is to be a user’s manual for your project. 
-# how and where, if applicable, to `compile`, `configure`, and `use` your project. 
-
-# It should not be necessary for us to contact you with questions regarding your project after its submission. 
-# Hold our hand with this documentation; be sure to answer in your documentation any questions that you think we might have while testing your work.
-//====================================================================//
 
                                                 ## Mass Shootings Website ##
 
@@ -48,5 +41,6 @@ This website is built with the following files:
 All files must be within the same main folder, e.g. `cs50_Final`. For the needs of Flask, `index.html` must be in a subfolder called `templates` and all 
 css files (`blog.css` and `bootstrap.min.css`) must be in a subfolder called `static`.
 
-                                                ## Necessary Applications ##
-        
+                                                ## Running the Website ##
+Once the development environment and necessary applications are downloaded and properly imported, navigate to the project folder via the
+command line and implement `flask run`. Click on the URL generated and enjoy! Please read through our findings and explore our map!

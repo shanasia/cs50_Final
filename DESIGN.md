@@ -12,7 +12,7 @@ which combine the power front end development with the art of story-telling thro
 succesful private company distribute the code for this service, but only guides users through their template process to create their
 own. With our newfound knowledge of computer science, this project is our first attempt at recreate the same experience "from scratch."
 
-                                                ## OVERALL DESIGN ##
+                                            ## OVERALL DESIGN ##
 ESRI Story Maps are typically one-page websites that guide the user through a story-telling experience. As the user scrolls, new 
 sections of the story are revealed. Our website, "Mass Shootings" is also a one-page website composed of three sections: an 
 introduction image, a introductory description to the subject-matter (Mass Shootings) and an interactive map. 

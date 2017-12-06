@@ -14,7 +14,7 @@ The structure of this documentation is as follows:
 
 
                                             ## Necessary Applications ##
-* Languages utilized:
+*Languages utilized:
     * PYTHON
     * HTML
     * CSS
@@ -35,7 +35,7 @@ The structure of this documentation is as follows:
         (where `value` is the key provided to you)
 
 
-                                    ## Accompanying Files and Structures ##
+                    ## Accompanying Files and Structures ##
 This website is built with the following files:
 * `application.py`
 * `locations.db`
@@ -43,12 +43,12 @@ This website is built with the following files:
 * `blog.css`
 * `bootstrap.min.css`
 
-All files must be within the same main folder, e.g. `cs50_Final`. For the needs of Flask, `index.html` must be in a subfolder called `templates` and all 
-css files (`blog.css` and `bootstrap.min.css`) must be in a subfolder called `static`.
+All files must be within the same main folder, e.g. `cs50_Final`. For the needs of Flask, `index.html` must be in a subfolder called `/templates` and all 
+css files (`blog.css` and `bootstrap.min.css`) must be in a subfolder called `/static`.
 
 
                                             ## Running the Website ##
-Once the development environment and necessary applications are downloaded and properly imported, navigate to the project folder via the command line and implement `flask run`. 
+Once the development environment and necessary applications are downloaded and properly imported, navigate to the project folder via the command line and implement `~ $ flask run`. 
 Click on the URL generated and __enjoy__! 
 
 _Please read through our findings and explore our map!_

@@ -65,10 +65,6 @@ def update():
     # Explode northeast corner into two variables
     ne_lat, ne_lng = map(float, request.args.get("ne").split(","))
 
-    print("PRINTING++++++++++++++++++")
-    print(sw_lat, sw_lng)
-    print(ne_lat, ne_lng)
-
 
     # Find all locations of mass shootings within view, pseudorandomly chosen if more within view
     if sw_lng <= ne_lng:
@@ -93,18 +89,18 @@ def update():
     return jsonify(rows)
 
 
-@app.route("/search")
-def search():
-    """Search for places that match query"""
+# @app.route("/search")
+# def search():
+#     """Search for places that match query"""
 
-    if not request.args.get("q"):
-        raise RuntimeError("no entry")
+#     if not request.args.get("q"):
+#         raise RuntimeError("no entry")
 
-    # source: https://stackoverflow.com/questions/8520469/how-to-select-using-both-wildcards-like-and-array-in
-    else:
-        q = request.args.get("q") + "%"
-        return jsonify(db.execute("SELECT * FROM cities WHERE city LIKE :q", q=q))
-
+#     # source: https://stackoverflow.com/questions/8520469/how-to-select-using-both-wildcards-like-and-array-in
+#     else:
+#         q = request.args.get("q") + "%"
+#         print("PRINTING++++++++++++++++++")
+#         return jsonify(db.execute("SELECT * FROM cities WHERE city LIKE :q", q=q))
 
 # @app.route("/login")
 # @login_required

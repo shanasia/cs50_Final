@@ -36,7 +36,7 @@ h6, .h6 {
 
 
 /*
- * Background Text for Dummy Map
+ * Background Text for Introductory Image
  */
 
 .backgroundmap-text {
@@ -68,44 +68,6 @@ h6, .h6 {
 }
 /* Source: https://www.w3schools.com/howto/howto_css_full_page.asp */
 
-
-/*
- * Masthead for nav
- */
-
-/* Nav links */
-.nav-item {
-  position: relative;
-  display: inline-block;
-  padding: 10px;
-  font-weight: 500;
-  color: #cdddeb;
-}
-.nav-item:hover,
-.nav-item:focus {
-  color: #fff;
-  text-decoration: none;
-}
-
-/* Active state gets a caret at the bottom */
-.nav .active {
-  color: #fff;
-}
-.nav .active:after {
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  width: 0;
-  height: 0;
-  margin-left: -5px;
-  vertical-align: middle;
-  content: " ";
-  border-right: 5px solid transparent;
-  border-bottom: 5px solid;
-  border-left: 5px solid transparent;
-}
-
-
 /*
  * Blog name and description
  */
@@ -134,18 +96,6 @@ h6, .h6 {
   line-height: 1.5;
 }
 
-.navbar {
-    overflow: hidden;
-    background-color: #333;
-    position: fixed; /* Set the navbar to fixed position */
-    top: 0; /* Position the navbar at the top of the page */
-    width: 100%; /* Full width */
-}
-/* Source: https://www.w3schools.com/howto/howto_css_fixed_menu.asp */
-
-/*
- * Main column and sidebar layout
- */
 .maptext-container {
 
   position: relative;
@@ -159,36 +109,6 @@ h6, .h6 {
   opacity: 0.3;
 }
 /* https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_image_overlay_opacity */
-
-
-/* Sidebar modules for boxing content */
-.sidebar-module {
-  padding: 15px;
-  margin: 0 -15px 15px;
-}
-.sidebar-module-inset {
-  padding: 15px;
-  background-color: #f5f5f5;
-  border-radius: 4px;
-}
-.sidebar-module-inset p:last-child,
-.sidebar-module-inset ul:last-child,
-.sidebar-module-inset ol:last-child {
-  margin-bottom: 0;
-}
-
-
-/* Pagination */
-.pager {
-  margin-bottom: 60px;
-  text-align: left;
-}
-.pager > li > a {
-  width: 140px;
-  padding: 10px 20px;
-  text-align: center;
-  border-radius: 30px;
-}
 
 /*
  * Parallax Slider
@@ -265,6 +185,8 @@ h6, .h6 {
   width: 100%;
   margin: 0;
   padding: 0;
+<<<<<<< HEAD
+=======
 }
 
 /* Right align form */
@@ -300,6 +222,7 @@ h6, .h6 {
 /*}*/
 
 /* Stylize typeahead.js a la http://twitter.github.io/typeahead.js/css/examples.css */
+<<<<<<< HEAD
 /*.tt-menu*/
 /*{*/
 /*    background-color: #fff;*/
@@ -319,3 +242,25 @@ h6, .h6 {
 /*    margin: 0;*/
 /*    padding: 6px 12px;*/
 /*}*/
+=======
+.tt-menu
+{
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-top: 1px;
+    max-height: 150px;
+    overflow-y: auto;
+    width: 300px;
+}
+.tt-suggestion.tt-cursor {
+    background-color: #0097cf;
+    color: #fff;
+    cursor: pointer;
+}
+.tt-suggestion {
+    margin: 0;
+    padding: 6px 12px;
+>>>>>>> ed5f5cbf5a5f71ba678fcbd264411f15dd2166ff
+}
+>>>>>>> 68842f510d7a604c3b707898cfc9b217c31ed7b4

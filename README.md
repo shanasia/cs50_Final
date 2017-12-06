@@ -35,7 +35,7 @@ The structure of this documentation is as follows:
         (where `value` is the key provided to you)
 
 
-                                                ## Accompanying Files and Structures ##
+                                    ## Accompanying Files and Structures ##
 
 This website is built with the following files:
 * `application.py`

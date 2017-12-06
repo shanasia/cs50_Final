@@ -46,7 +46,7 @@ h6, .h6 {
   left: 50%;
   transform: translate(-50%, -50%);
   color: white;
-  font-size: 60px;
+  font-size: 105px;
 }
 /* Source: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_hero_image */
 
@@ -56,7 +56,7 @@ h6, .h6 {
 
 .background {
     /* The image used */
-    background-image: url("/static/CityLab_Map.png "); /* Dimensions: 940 × 675 */
+    background-image: url("/static/cover_img.jpg "); /* Dimensions: 940 × 675 */
 
     /* Full height */
     height: 100%;
@@ -83,7 +83,7 @@ h6, .h6 {
   font-weight: normal;
 }
 .description {
-  font-size: 20px;
+  font-size: 40px;
   color: #999;
 }
 
@@ -116,7 +116,7 @@ h6, .h6 {
 
 .parallax {
     /* The image used */
-    background-image: url("/static/CityLab_Map.png ");
+    background-image: url("/static/cover_img.jpg");
 
     /* Set a specific height */
     height: 100%;
@@ -210,17 +210,39 @@ h6, .h6 {
     justify-content: flex-start;
 }
 
+
 /* Stylize text box */
-#q
-{
+/*#q*/
+/*{*/
     /* Override typeahead.js's transparent background */
-    background-color: #ffffff !important;
+/*    background-color: #ffffff !important;*/
 
     /* Text box's width */
-    width: 300px;
-}
+/*    width: 300px;*/
+/*}*/
 
 /* Stylize typeahead.js a la http://twitter.github.io/typeahead.js/css/examples.css */
+<<<<<<< HEAD
+/*.tt-menu*/
+/*{*/
+/*    background-color: #fff;*/
+/*    border: 1px solid #ccc;*/
+/*    border-radius: 4px;*/
+/*    margin-top: 1px;*/
+/*    max-height: 150px;*/
+/*    overflow-y: auto;*/
+/*    width: 300px;*/
+/*}*/
+/*.tt-suggestion.tt-cursor {*/
+/*    background-color: #0097cf;*/
+/*    color: #fff;*/
+/*    cursor: pointer;*/
+/*}*/
+/*.tt-suggestion {*/
+/*    margin: 0;*/
+/*    padding: 6px 12px;*/
+/*}*/
+=======
 .tt-menu
 {
     background-color: #fff;
@@ -241,3 +263,4 @@ h6, .h6 {
     padding: 6px 12px;
 >>>>>>> ed5f5cbf5a5f71ba678fcbd264411f15dd2166ff
 }
+>>>>>>> 68842f510d7a604c3b707898cfc9b217c31ed7b4

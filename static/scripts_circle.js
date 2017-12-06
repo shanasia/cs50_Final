@@ -13,31 +13,233 @@ $(document).ready(function() {
     // Styles for map
     // https://developers.google.com/maps/documentation/javascript/styling
     let styles = [
-
-        // Hide Google's labels
-        {
-            featureType: "all",
-            elementType: "labels",
-            stylers: [
-                {visibility: "off"}
-            ]
-        },
-
-        // Hide roads
-        {
-            featureType: "road",
-            elementType: "geometry",
-            stylers: [
-                {visibility: "off"}
-            ]
-        }
-
-    ];
+  {
+    "elementType": "geometry",
+    "stylers": [
+      {
+        "color": "#212121"
+      }
+    ]
+  },
+  {
+    "elementType": "labels",
+    "stylers": [
+      {
+        "visibility": "off"
+      }
+    ]
+  },
+  {
+    "elementType": "labels.icon",
+    "stylers": [
+      {
+        "visibility": "off"
+      }
+    ]
+  },
+  {
+    "elementType": "labels.text.fill",
+    "stylers": [
+      {
+        "color": "#757575"
+      }
+    ]
+  },
+  {
+    "elementType": "labels.text.stroke",
+    "stylers": [
+      {
+        "color": "#212121"
+      }
+    ]
+  },
+  {
+    "featureType": "administrative",
+    "elementType": "geometry",
+    "stylers": [
+      {
+        "color": "#757575"
+      }
+    ]
+  },
+  {
+    "featureType": "administrative.country",
+    "elementType": "geometry.stroke",
+    "stylers": [
+      {
+        "color": "#c7c7c7"
+      },
+      {
+        "weight": 1
+      }
+    ]
+  },
+  {
+    "featureType": "administrative.country",
+    "elementType": "labels.text.fill",
+    "stylers": [
+      {
+        "color": "#9e9e9e"
+      }
+    ]
+  },
+  {
+    "featureType": "administrative.land_parcel",
+    "stylers": [
+      {
+        "visibility": "off"
+      }
+    ]
+  },
+  {
+    "featureType": "administrative.locality",
+    "elementType": "labels.text.fill",
+    "stylers": [
+      {
+        "color": "#bdbdbd"
+      }
+    ]
+  },
+  {
+    "featureType": "administrative.neighborhood",
+    "stylers": [
+      {
+        "visibility": "off"
+      }
+    ]
+  },
+  {
+    "featureType": "poi",
+    "elementType": "labels.text.fill",
+    "stylers": [
+      {
+        "color": "#757575"
+      }
+    ]
+  },
+  {
+    "featureType": "poi.park",
+    "elementType": "geometry",
+    "stylers": [
+      {
+        "color": "#181818"
+      }
+    ]
+  },
+  {
+    "featureType": "poi.park",
+    "elementType": "labels.text.fill",
+    "stylers": [
+      {
+        "color": "#616161"
+      }
+    ]
+  },
+  {
+    "featureType": "poi.park",
+    "elementType": "labels.text.stroke",
+    "stylers": [
+      {
+        "color": "#1b1b1b"
+      }
+    ]
+  },
+  {
+    "featureType": "road",
+    "elementType": "geometry.fill",
+    "stylers": [
+      {
+        "color": "#2c2c2c"
+      }
+    ]
+  },
+  {
+    "featureType": "road",
+    "elementType": "labels.text.fill",
+    "stylers": [
+      {
+        "color": "#8a8a8a"
+      }
+    ]
+  },
+  {
+    "featureType": "road.arterial",
+    "elementType": "geometry",
+    "stylers": [
+      {
+        "color": "#373737"
+      }
+    ]
+  },
+  {
+    "featureType": "road.highway",
+    "elementType": "geometry",
+    "stylers": [
+      {
+        "color": "#3c3c3c"
+      }
+    ]
+  },
+  {
+    "featureType": "road.highway.controlled_access",
+    "elementType": "geometry",
+    "stylers": [
+      {
+        "color": "#4e4e4e"
+      }
+    ]
+  },
+  {
+    "featureType": "road.local",
+    "elementType": "labels.text.fill",
+    "stylers": [
+      {
+        "color": "#616161"
+      }
+    ]
+  },
+  {
+    "featureType": "transit",
+    "elementType": "labels.text.fill",
+    "stylers": [
+      {
+        "color": "#757575"
+      }
+    ]
+  },
+  {
+    "featureType": "water",
+    "elementType": "geometry",
+    "stylers": [
+      {
+        "color": "#000000"
+      }
+    ]
+  },
+  {
+    "featureType": "water",
+    "elementType": "geometry.fill",
+    "stylers": [
+      {
+        "color": "#919ca4"
+      }
+    ]
+  },
+  {
+    "featureType": "water",
+    "elementType": "labels.text.fill",
+    "stylers": [
+      {
+        "color": "#3d3d3d"
+      }
+    ]
+  }
+];
 
     // Options for map
     // https://developers.google.com/maps/documentation/javascript/reference#MapOptions
     let options = {
-        center: {lat: 0, lng: 0}, // Cambridge, Massachusetts
+        center: {lat: 30, lng: 0}, // Cambridge, Massachusetts
         disableDefaultUI: true,
         mapTypeId: google.maps.MapTypeId.TERRAIN,
         maxZoom: 14,
@@ -60,40 +262,6 @@ $(document).ready(function() {
 
 });
 
-
-function initMap() {
-
-    // define center
-    //var uluru = {lat: -25.363, lng: 131.044};
-
-    map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 2
-        //center: uluru
-    });
-
-    // Configure UI once Google Map is idle (i.e., loaded)
-    google.maps.event.addListenerOnce(map, "idle", configure);
-
-
-    // Source: https://gist.github.com/parth1020/4481893
-    // declare variables
-    //var marker, i;
-
-    // place marker for each location
-    //for (i = 0; i < locations.length; i++) {
-        //marker = new google.maps.Marker({
-            //position: new google.maps.LatLng(locations[i][1], locations[i][2]),
-            //map: map
-    //});
-
-    // add listener for clicks
-    //google.maps.event.addListener(marker, 'click', (function(marker, i) {
-        //return function() {
-            //infowindow.setContent(locations[i][0]);
-            //infowindow.open(map, marker);
-        //}
-        //})(marker, i));
-}
 
 // Configure application
 function configure()
@@ -212,23 +380,31 @@ function addMarker(location)
     // store latitude and longitude in variable
     let LatLng = new google.maps.LatLng(location.lat, location.long);
 
+    // define magnitude
+    let magnitude = location.deaths;
+
     // instantiate marker
     let marker = new google.maps.Marker({
         position: LatLng,
-        //label: location.city_name,
         map: map,
+
+        //source: https://developers.google.com/maps/documentation/javascript/earthquakes#circle_size
         //source: https://stackoverflow.com/questions/40490129/set-label-size-in-google-maps-api
         label: {
-            text: location.city_name,
-            color: 'black',
-            fontSize: "12px"
+            text: location.deaths,
+            color: 'white',
+            fontSize: "15px"
         },
         icon: {
-            labelOrigin: new google.maps.Point(7, 40),
-            // source: https://stackoverflow.com/questions/8248077/google-maps-v3-standard-icon-shadow-names-equiv-of-g-default-icon-in-v2
-            url: 'http://maps.google.com/mapfiles/marker.png'
+            path: google.maps.SymbolPath.CIRCLE,
+            fillColor: 'red',
+            fillOpacity: .4,
+            scale: magnitude/2,
+            strokeColor: 'white',
+            strokeWeight: .5
         }
     });
+
 
     // add newly created marker to the array stored in global variable markers
     markers.push(marker);
@@ -247,11 +423,6 @@ function addMarker(location)
         showInfo(marker, content);
     });
 }
-        //});
-
-
-    //});
-
 
 
 // Show info window at marker with content

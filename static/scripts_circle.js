@@ -282,38 +282,38 @@ function configure()
         update();
     });
 
-    // Configure typeahead
-    //$("#q").typeahead({
-        //highlight: false,
-        //minLength: 1
-    //},
-    //{
-        //display: function(suggestion) { return null; },
-        //limit: 10,
-        //source: search,
-        //templates: {
-            //suggestion: Handlebars.compile(
-                //"<div>" +
-                //"{{city}}, {{country}}" +
-                //"</div>"
-            //)
-        //}
-    //};
+    // //Configure typeahead
+    // $("#q").typeahead({
+    //     highlight: false,
+    //     minLength: 1
+    // },
+    // {
+    //     display: function(suggestion) { return null; },
+    //     limit: 10,
+    //     source: search,
+    //     templates: {
+    //         suggestion: Handlebars.compile(
+    //             "<div>" +
+    //             "{{city}}, {{country}}" +
+    //             "</div>"
+    //         )
+    //     }
+    // });
 
-    // Re-center map after place is selected from drop-down
-    //$("#q").on("typeahead:selected", function(eventObject, suggestion, name) {
+    // // Re-center map after place is selected from drop-down
+    // $("#q").on("typeahead:selected", function(eventObject, suggestion, name) {
 
-        // Set map's center
-        //map.setCenter({lat: parseFloat(suggestion.latitude), lng: parseFloat(suggestion.longitude)});
+    //     // Set map's center
+    //     map.setCenter({lat: parseFloat(suggestion.latitude), lng: parseFloat(suggestion.longitude)});
 
-        // Update UI
-        //update();
-    //});
+    //     // Update UI
+    //     update();
+    // });
 
-    // Hide info window when text box has focus
-    $("#q").focus(function(eventData) {
-        info.close();
-    });
+    // // Hide info window when text box has focus
+    // $("#q").focus(function(eventData) {
+    //     info.close();
+    // });
 
     // Re-enable ctrl- and right-clicking (and thus Inspect Element) on Google Map
     // https://chrome.google.com/webstore/detail/allow-right-click/hompjdfbfmmmgflfjdlnkohcplmboaeo?hl=en
@@ -326,8 +326,8 @@ function configure()
     // Update UI
     update();
 
-    // Give focus to text box
-    $("#q").focus();
+    // // Give focus to text box
+    // $("#q").focus();
 }
 
 // Update UI's markers
@@ -360,19 +360,19 @@ function update()
 }
 
 
-// Search database for typeahead's suggestions
-function search(query, syncResults, asyncResults)
-{
-    // Get places matching query (asynchronously)
-    let parameters = {
-        q: query
-    };
-    $.getJSON("/search", parameters, function(data, textStatus, jqXHR) {
+// // Search database for typeahead's suggestions
+// function search(query, syncResults, asyncResults)
+// {
+//     // Get places matching query (asynchronously)
+//     let parameters = {
+//         q: query
+//     };
+//     $.getJSON("/search", parameters, function(data, textStatus, jqXHR) {
 
-        // Call typeahead's callback with search results (i.e., places)
-        asyncResults(data);
-    });
-}
+//         // Call typeahead's callback with search results (i.e., places)
+//         asyncResults(data);
+//     });
+// }
 
 
 function addMarker(location)
@@ -384,26 +384,26 @@ function addMarker(location)
     let magnitude = location.deaths;
 
     // instantiate marker
-    let marker = new google.maps.Marker({
-        position: LatLng,
-        map: map,
+    // let marker = new google.maps.Marker({
+    //     position: LatLng,
+    //     map: map,
 
-        //source: https://developers.google.com/maps/documentation/javascript/earthquakes#circle_size
-        //source: https://stackoverflow.com/questions/40490129/set-label-size-in-google-maps-api
-        label: {
-            text: location.deaths,
-            color: 'white',
-            fontSize: "15px"
-        },
-        icon: {
-            path: google.maps.SymbolPath.CIRCLE,
-            fillColor: 'red',
-            fillOpacity: .4,
-            scale: magnitude/2,
-            strokeColor: 'white',
-            strokeWeight: .5
-        }
-    });
+    //     //source: https://developers.google.com/maps/documentation/javascript/earthquakes#circle_size
+    //     //source: https://stackoverflow.com/questions/40490129/set-label-size-in-google-maps-api
+    //     label: {
+    //         text: location.deaths,
+    //         color: 'white',
+    //         fontSize: "15px"
+    //     },
+    //     icon: {
+    //         path: google.maps.SymbolPath.CIRCLE,
+    //         fillColor: 'red',
+    //         fillOpacity: .4,
+    //         scale: magnitude/1.5,
+    //         strokeColor: 'white',
+    //         strokeWeight: .5
+    //     }
+    // });
 
 
     // add newly created marker to the array stored in global variable markers
